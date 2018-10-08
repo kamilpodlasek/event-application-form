@@ -1,0 +1,14 @@
+{
+    "name": "event-application-form",
+    "version": "1.0.0",
+    "description": "Simple event application form",
+    "main": "index.js",
+    "author": "Kamil Podlasek",
+    "license": "MIT",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.3",
+        "lodash": "^4.17.11",
+        "mongoose": "^5.3.1"
+    }
+}
