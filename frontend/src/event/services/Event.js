@@ -5,6 +5,6 @@ export class Event {
     }
 
     createEvent(event) {
-        return this.HttpService.POST('application', event);
+        return this.HttpService.POST('event', event);
     }
 }
