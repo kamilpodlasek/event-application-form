@@ -1,6 +1,10 @@
 const _ = require('lodash');
 
 const Event = require('../models/event.model');
+const validationMiddleware = require('../middlewares/validationMiddleware');
+const { eventValidationSchema } = require('common');
+
+exports.validate = validationMiddleware(eventValidationSchema);
 
 exports.create = (req, res) => {
     const event = new Event(pickEventFields(req.body));
@@ -20,7 +24,7 @@ exports.getAll = (req, res) => {
     });
 };
 
-exports.get = (req, res) => {
+exports.getOne = (req, res) => {
     Event.findById(req.params.id, (err, event) => {
         if (err) return res.send(err);
 

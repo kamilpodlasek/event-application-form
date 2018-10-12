@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Button, DatePicker, Input, Form, Row, Col } from 'antd';
 import { withFormik } from 'formik';
-import * as yup from 'yup';
 
+import { eventValidationSchema } from 'common';
 import { createEventRequest } from './event/actions/eventActions';
 import 'antd/dist/antd.css';
 
@@ -19,25 +19,6 @@ const textFieldsConfig = [
     { label: 'Last Name', name: 'lastName' },
     { label: 'E-mail', name: 'email' },
 ];
-
-const validationSchema = yup.object().shape({
-    firstName: yup
-        .string()
-        .trim()
-        .required('First name is required'),
-    lastName: yup
-        .string()
-        .trim()
-        .required('Last name is required'),
-    email: yup
-        .string()
-        .email('E-mail must be valid')
-        .required('E-mail is required'),
-    date: yup
-        .date()
-        .typeError('Date is required')
-        .required('Date is required'),
-});
 
 function getValidateStatuses({ touched, errors }) {
     return Object.entries(touched).reduce((acc, [fieldName, fieldTouched]) => {
@@ -122,7 +103,7 @@ export const App = connect(
     },
 )(
     withFormik({
-        validationSchema,
+        validationSchema: eventValidationSchema,
         mapPropsToValues: () => initialState,
         handleSubmit: ({ date, ...values }, { props }) =>
             props.createEventRequest({ ...values, date: date.toString() }),

@@ -1,0 +1,1 @@
+exports.eventValidationSchema = require('./eventValidationSchema');
