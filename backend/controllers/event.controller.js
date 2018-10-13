@@ -9,8 +9,8 @@ exports.validate = validationMiddleware(eventValidationSchema);
 exports.create = (req, res) => {
     const event = new Event(pickEventFields(req.body));
 
-    event.save(function(err) {
-        if (err) return res.send(err);
+    event.save(err => {
+        if (err) return res.status(400).send(err);
 
         res.send({ message: 'Event application saved!' });
     });
@@ -18,7 +18,7 @@ exports.create = (req, res) => {
 
 exports.getAll = (req, res) => {
     Event.find((err, events) => {
-        if (err) return res.send(err);
+        if (err) return res.status(400).send(err);
 
         res.send(events);
     });
@@ -26,7 +26,7 @@ exports.getAll = (req, res) => {
 
 exports.getOne = (req, res) => {
     Event.findById(req.params.id, (err, event) => {
-        if (err) return res.send(err);
+        if (err) return res.status(400).send(err);
 
         res.send(event);
     });
@@ -34,12 +34,12 @@ exports.getOne = (req, res) => {
 
 exports.update = (req, res) => {
     Event.findById(req.params.id, (err, event) => {
-        if (err) return res.send(err);
+        if (err) return res.status(400).send(err);
 
         _.merge(event, pickEventFields(req.body));
 
         event.save(err => {
-            if (err) return res.send(err);
+            if (err) return res.status(400).send(err);
 
             res.send({ message: 'Event application updated!' });
         });
@@ -48,7 +48,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
     Event.findByIdAndRemove(req.params.id, err => {
-        if (err) return res.send(err);
+        if (err) return res.status(400).send(err);
 
         res.send({ message: 'Event application deleted!' });
     });

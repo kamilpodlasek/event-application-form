@@ -24,6 +24,12 @@ export class Http {
             method,
         };
 
-        return fetch(api + path, options).then(res => res.json());
+        return fetch(api + path, options).then(async res => {
+            if (res.ok) {
+                return res.json();
+            }
+
+            throw await res.json();
+        });
     }
 }

@@ -3,6 +3,6 @@ module.exports = function(validationSchema) {
         validationSchema
             .validate(req.body)
             .then(() => next())
-            .catch(err => res.send(err));
+            .catch(err => res.status(400).send(err));
     };
 };
