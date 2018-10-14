@@ -16,7 +16,7 @@ exports.create = (req, res) => {
     });
 };
 
-exports.getAll = (req, res) => {
+exports.getAll = (_req, res) => {
     Event.find((err, events) => {
         if (err) return res.status(400).send(err);
 
@@ -46,11 +46,11 @@ exports.update = (req, res) => {
     });
 };
 
-exports.delete = (req, res) => {
+exports.remove = (req, res) => {
     Event.findByIdAndRemove(req.params.id, err => {
         if (err) return res.status(400).send(err);
 
-        res.send({ message: 'Event application deleted!' });
+        res.send({ message: 'Event application removed!' });
     });
 };
 

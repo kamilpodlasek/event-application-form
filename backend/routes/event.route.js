@@ -8,6 +8,6 @@ router.route('/').post(event.validate, event.create);
 router.route('/').get(event.getAll);
 router.route('/:id').get(event.getOne);
 router.route('/:id').put(event.validate, event.update);
-router.route('/:id').delete(event.delete);
+router.route('/:id').delete(event.remove);
 
 module.exports = router;
