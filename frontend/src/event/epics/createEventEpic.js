@@ -9,7 +9,7 @@ import {
     createEventFailed,
 } from '../actions/eventActions';
 
-const createEventRequestedEpic = (action$, _state$, { EventService }) =>
+export const createEventRequestedEpic = (action$, _state$, { EventService }) =>
     action$.pipe(
         ofType(CREATE_EVENT_REQUESTED),
         throttleTime(1000),
@@ -21,7 +21,7 @@ const createEventRequestedEpic = (action$, _state$, { EventService }) =>
         ),
     );
 
-const createEventSucceededEpic = (action$, _state$, { MessageService }) =>
+export const createEventSucceededEpic = (action$, _state$, { MessageService }) =>
     action$.pipe(
         ofType(CREATE_EVENT_SUCCEEDED),
         pluck('payload'),
@@ -29,7 +29,7 @@ const createEventSucceededEpic = (action$, _state$, { MessageService }) =>
         ignoreElements(),
     );
 
-const createEventFailedEpic = (action$, _state$, { MessageService }) =>
+export const createEventFailedEpic = (action$, _state$, { MessageService }) =>
     action$.pipe(
         ofType(CREATE_EVENT_FAILED),
         pluck('payload'),

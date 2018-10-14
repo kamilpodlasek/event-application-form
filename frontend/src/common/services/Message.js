@@ -1,15 +1,17 @@
-import { message } from 'antd';
-
 export class Message {
+    constructor(MessageProvider) {
+        this.MessageProvider = MessageProvider;
+    }
+
     showInfo(text) {
-        message.info(text);
+        this.MessageProvider.info(text);
     }
 
     showSuccess(text) {
-        message.success(text);
+        this.MessageProvider.success(text);
     }
 
     showError(text) {
-        message.error(text);
+        this.MessageProvider.error(text);
     }
 }

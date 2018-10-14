@@ -1,7 +1,6 @@
 export class Event {
-    constructor(HttpService, MessageService) {
+    constructor(HttpService) {
         this.HttpService = HttpService;
-        this.MessageService = MessageService;
     }
 
     createEvent(event) {
