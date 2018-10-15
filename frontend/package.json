@@ -1,7 +1,15 @@
 {
-    "name": "event-application-form",
-    "version": "0.1.0",
-    "private": true,
+    "name": "event-application-form-frontend",
+    "version": "1.0.0",
+    "description": "Simple event application form frontend",
+    "author": "Kamil Podlasek",
+    "license": "MIT",
+    "scripts": {
+        "start": "PORT=3031 react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test --watchAll",
+        "eject": "react-scripts eject"
+    },
     "dependencies": {
         "antd": "^3.10.0",
         "common": "file:../common",
@@ -12,12 +20,6 @@
         "react-scripts": "2.0.4",
         "redux": "^4.0.0",
         "redux-observable": "^1.0.0"
-    },
-    "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
     },
     "eslintConfig": {
         "extends": "react-app"

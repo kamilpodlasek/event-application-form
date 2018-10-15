@@ -1,6 +1,9 @@
 {
     "name": "common",
     "version": "1.0.0",
+    "description": "Simple event application form common files",
+    "author": "Kamil Podlasek",
+    "license": "MIT",
     "main": "index.js",
     "dependencies": {
         "yup": "^0.26.6"

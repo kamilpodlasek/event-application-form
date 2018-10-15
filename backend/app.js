@@ -5,8 +5,8 @@ const cors = require('cors');
 
 const api = require('./routes/api');
 
-const port = 8000;
-const dbUrl = 'mongodb://localhost:27017/application';
+const port = 3030;
+const dbUrl = 'mongodb://db:27017/event';
 
 mongoose.connect(
     dbUrl,

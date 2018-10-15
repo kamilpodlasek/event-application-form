@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+    db:
+        image: mongo
+        volumes:
+            - /tmp/event-application-form:/app/db
+        ports:
+            - 21017:21017
+
+    backend:
+        build:
+            context: ./
+            dockerfile: ./backend/Dockerfile
+            args:
+                task: start
+        volumes:
+            - ./backend:/app/backend
+        expose:
+            - '3030'
+        ports:
+            - 3030:3030
+        links:
+            - db
+
+    frontend:
+        build:
+            context: ./
+            dockerfile: ./frontend/Dockerfile
+            args:
+                task: start
+        volumes:
+            - ./frontend:/app/frontend
+        expose:
+            - '3031'
+        ports:
+            - 3031:3031
+        links:
+            - backend

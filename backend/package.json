@@ -1,11 +1,11 @@
 {
-    "name": "event-application-form",
+    "name": "event-application-form-backend",
     "version": "1.0.0",
-    "description": "Simple event application form",
-    "main": "index.js",
+    "description": "Simple event application form backend",
     "author": "Kamil Podlasek",
     "license": "MIT",
     "scripts": {
+        "start": "node app.js",
         "test": "jest --watchAll"
     },
     "dependencies": {
