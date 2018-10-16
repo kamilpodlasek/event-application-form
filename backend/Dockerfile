@@ -1,11 +1,8 @@
+FROM event-application-form-common:latest as common
 FROM node:carbon
-ARG task
-ENV task ${task}
-
-WORKDIR /app/common
-COPY common/package*.json ./
-RUN npm install
-COPY common .
 
 WORKDIR /app/backend
-CMD npm install && npm ${task}
+COPY package*.json ./
+COPY --from=common /app/common/ ./common
+RUN npm install
+COPY . .

@@ -8,32 +8,39 @@ services:
         ports:
             - 21017:21017
 
+    common:
+        image: event-application-form-common
+        build: './common'
+
     backend:
-        build:
-            context: ./
-            dockerfile: ./backend/Dockerfile
-            args:
-                task: start
+        build: './backend'
         volumes:
             - ./backend:/app/backend
+            - /app/backend/node_modules
+            - /app/backend/common
         expose:
             - '3030'
         ports:
             - 3030:3030
         links:
             - db
+        depends_on:
+            - common
+            - db
+        command: npm start
 
     frontend:
-        build:
-            context: ./
-            dockerfile: ./frontend/Dockerfile
-            args:
-                task: start
+        build: './frontend'
         volumes:
             - ./frontend:/app/frontend
+            - /app/frontend/node_modules
+            - /app/frontend/common
         expose:
             - '3031'
         ports:
             - 3031:3031
         links:
             - backend
+        depends_on:
+            - common
+        command: npm start

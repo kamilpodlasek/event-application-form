@@ -1,20 +1,26 @@
 version: '3'
 
 services:
+    common-tests:
+        image: event-application-form-common
+        build: './common'
+
     backend-tests:
-        build:
-            context: ./
-            dockerfile: ./backend/Dockerfile
-            args:
-                task: test
+        build: './backend'
         volumes:
             - ./backend:/app/backend
+            - /app/backend/node_modules
+            - /app/backend/common
+        depends_on:
+            - common-tests
+        command: npm test
 
     frontend-tests:
-        build:
-            context: ./
-            dockerfile: ./frontend/Dockerfile
-            args:
-                task: test
+        build: './frontend'
         volumes:
             - ./frontend:/app/frontend
+            - /app/frontend/node_modules
+            - /app/frontend/common
+        depends_on:
+            - common-tests
+        command: npm test

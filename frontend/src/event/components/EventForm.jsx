@@ -22,7 +22,8 @@ class EventFormComponent extends Component {
 
         return (
             <Row>
-                <Col span={6} offset={9}>
+                <Col xs={{ span: 18, offset: 3 }} md={{ span: 8, offset: 8 }}>
+                    <h1 style={{ marginTop: 20 }}>Event application form</h1>
                     <Form onSubmit={handleSubmit}>
                         {textFieldsConfig.map(({ label, name }) => (
                             <Form.Item

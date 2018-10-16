@@ -9,7 +9,6 @@ import { rootReducer } from './rootReducer';
 import { services } from './rootService';
 import { App } from './App';
 import * as serviceWorker from './serviceWorker';
-import './index.css';
 import 'antd/dist/antd.css';
 
 const epicMiddleware = createEpicMiddleware({ dependencies: services });
