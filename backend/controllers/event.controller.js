@@ -9,10 +9,14 @@ exports.validate = validationMiddleware(eventValidationSchema);
 exports.create = (req, res) => {
     const event = new Event(pickEventFields(req.body));
 
-    event.save(err => {
+    event.save(async err => {
         if (err) return res.status(400).send(err);
 
-        res.send({ message: 'Event application saved!' });
+        const events = await Event.find((err, events) => {
+            return events;
+        });
+
+        res.send({ message: 'Event application saved!', events });
     });
 };
 
